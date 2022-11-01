@@ -39,7 +39,7 @@ openssl genpkey -outform PEM -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out s
 
 ```console
 openssl req -new -nodes -key ssl_file/server.key \
--config /opt/ssltoolkit/cert_csrconfig.txt -nameopt utf8 -utf8 \
+-config /opt/ssltoolkit/config/cert_csrconfig.txt -nameopt utf8 -utf8 \
 -out ssl_file/server.csr
 ```
 
@@ -49,7 +49,7 @@ openssl req -new -nodes -key ssl_file/server.key \
 openssl x509 -req -in ssl_file/server.csr -days 364 \
 -CA /opt/ssltoolkit/txtdevs-intermediateCA/intermediateCA-cert.crt \
 -CAkey /opt/ssltoolkit/txtdevs-intermediateCA/intermediateCA-priv.key \
--extfile /opt/ssltoolkit/cert_certconfig.txt -extensions req_ext \
+-extfile /opt/ssltoolkit/config/cert_certconfig.txt -extensions req_ext \
 -CAserial /tmp/tmp-15259lzrTYKtHyyeP -CAcreateserial -nameopt utf8 -sha256 \
 -out ssl_file/server.crt
 ```
